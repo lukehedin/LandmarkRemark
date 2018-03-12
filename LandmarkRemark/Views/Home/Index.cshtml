@@ -1,17 +1,31 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Homez</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Landmark Remark</title>
+	@Scripts.Render("~/bundles/styles")
 </head>
 <body>
-    <div> 
-    </div>
+	<header>
+		<div>
+			Landmark Remark
+		</div>
+	</header>
+	<div class="content">
+		@Html.React("AppBase", new
+		{
+			user = System.Web.HttpContext.Current.Session["user"]
+		})
+	</div>
+	<footer>
+		<p>Created by Luke Hedin 2018</p>
+	</footer>
+
+
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	@Scripts.Render("~/bundles/components")
+	@Html.ReactInitJavaScript()
 </body>
 </html>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LandmarkRemarkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Remark">
+    <Key>
+      <PropertyRef Name="RemarkId" />
+    </Key>
+    <Property Name="RemarkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RemarkText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Remarks_Users" FromRole="Remarks" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Remarks" Relationship="Self.FK_Remarks_Users" FromRole="Users" ToRole="Remarks" />
+  </EntityType>
+  <Association Name="FK_Remarks_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Remarks" Type="Self.Remark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Remarks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LandmarkRemarkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Remarks" EntityType="Self.Remark" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Remarks_Users" Association="Self.FK_Remarks_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Remarks" EntitySet="Remarks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

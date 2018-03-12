@@ -13,5 +13,11 @@ namespace LandmarkRemark.Models
 		public DbSet<User> Users { get; set; }
 
 		public DbSet<Remark> Remarks { get; set; }
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			Database.SetInitializer<LandmarkRemarkDbContext>(null);
+			base.OnModelCreating(modelBuilder);
+		}
 	}
 }
