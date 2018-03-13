@@ -11,6 +11,9 @@
 			newUser: false
 		}
 	}
+	componentDidMount() {
+		this.refs.loginUsername.focus();
+	}
 	handleLoginClick() {
 		let username = this.refs.loginUsername.value;
 		let password = this.refs.loginPassword.value;

@@ -59,7 +59,7 @@
 
 		if (this.state.user) {
 			baseContent = <RemarkMap /> 
-			userInfo = <span>{this.state.user.username} - <a onClick={this.logout}>Log out</a></span>
+			userInfo = <div>{this.state.user.username}<a onClick={this.logout}>Log out</a></div>
 		} else {
 			baseContent = <AuthenticationForm
 				handleLoginClick={this.login}
@@ -72,7 +72,7 @@
 			<div className="app-base">
 				<header className="app-header">
 					<div className="app-title">
-						<img src="/Images/logo.png"/>
+						<img src="/Images/logo.svg"/>
 					</div>
 					<div className="app-user-info">
 						{userInfo}

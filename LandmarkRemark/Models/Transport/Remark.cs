@@ -13,6 +13,8 @@ namespace LandmarkRemark.Models.Transport
 
 		public string Username { get; set; }
 
+		public string RemarkText { get; set; }
+
 		public decimal Latitude { get; set; }
 
 		public decimal Longitude { get; set; }
@@ -27,6 +29,7 @@ namespace LandmarkRemark.Models.Transport
 				UserId = rem.UserId,
 				//LH: 'Username' join may not scale well. Could be enhanced by utilising a lookup of userId to username
 				Username = rem.User.Username,
+				RemarkText = rem.RemarkText,
 				Latitude = rem.Latitude,
 				Longitude = rem.Longitude,
 				CreatedTimestamp = rem.DateCreated.ToShortDateString()

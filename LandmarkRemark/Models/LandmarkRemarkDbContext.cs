@@ -17,6 +17,11 @@ namespace LandmarkRemark.Models
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			Database.SetInitializer<LandmarkRemarkDbContext>(null);
+
+			//LH: Required for proper decimal precision
+			modelBuilder.Entity<Remark>().Property(x => x.Latitude).HasPrecision(9, 6);
+			modelBuilder.Entity<Remark>().Property(x => x.Longitude).HasPrecision(9, 6);
+
 			base.OnModelCreating(modelBuilder);
 		}
 	}

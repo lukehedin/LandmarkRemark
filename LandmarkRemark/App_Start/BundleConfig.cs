@@ -13,6 +13,8 @@ namespace LandmarkRemark
 			bundles.Add(new ScriptBundle("~/bundles/components").Include(
 						 "~/Scripts/Components/Button.jsx",
 						 "~/Scripts/Components/AuthenticationForm.jsx",
+						 "~/Scripts/Components/RemarkAddForm.jsx",
+						 "~/Scripts/Components/RemarkFilter.jsx",
 						 "~/Scripts/Components/RemarkMap.jsx",
 						 "~/Scripts/Components/AppBase.jsx"));
 
@@ -20,6 +22,8 @@ namespace LandmarkRemark
 						"~/Scripts/Styles/styles.css",
 						"~/Scripts/Styles/Button.css",
 						"~/Scripts/Styles/AuthenticationForm.css",
+						"~/Scripts/Styles/RemarkAddForm.css",
+						"~/Scripts/Styles/RemarkFilter.css",
 						"~/Scripts/Styles/RemarkMap.css",
 						"~/Scripts/Styles/AppBase.css"));
 		}

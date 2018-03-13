@@ -19,6 +19,8 @@ namespace LandmarkRemark
 			ReactSiteConfiguration.Configuration
 				.AddScript("~/Scripts/Components/Button.jsx")
 				.AddScript("~/Scripts/Components/AuthenticationForm.jsx")
+				.AddScript("~/Scripts/Components/RemarkAddForm.jsx")
+				.AddScript("~/Scripts/Components/RemarkFilter.jsx")
 				.AddScript("~/Scripts/Components/RemarkMap.jsx")
 				.AddScript("~/Scripts/Components/AppBase.jsx");
 			

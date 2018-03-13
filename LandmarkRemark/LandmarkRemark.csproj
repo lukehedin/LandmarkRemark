@@ -149,7 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo.svg" />
+    <Content Include="Images\marker.svg" />
+    <Content Include="Images\point.svg" />
+    <Content Include="Images\search.svg" />
     <Content Include="Models\LandmarkRemarkDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LandmarkRemarkDataModel.edmx</DependentUpon>
@@ -160,13 +163,17 @@
       <DependentUpon>LandmarkRemarkDataModel.edmx</DependentUpon>
       <LastGenOutput>LandmarkRemarkDataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Components\RemarkAddForm.jsx" />
     <Content Include="Scripts\Components\AppBase.jsx" />
     <Content Include="Scripts\Components\Button.jsx" />
     <Content Include="Scripts\Components\RemarkMap.jsx" />
     <Content Include="Scripts\Components\AuthenticationForm.jsx" />
+    <Content Include="Scripts\Components\RemarkFilter.jsx" />
+    <Content Include="Scripts\Styles\RemarkAddForm.css" />
     <Content Include="Scripts\Styles\AppBase.css" />
     <Content Include="Scripts\Styles\Button.css" />
     <Content Include="Scripts\Styles\RemarkMap.css" />
+    <Content Include="Scripts\Styles\RemarkFilter.css" />
     <Content Include="Scripts\Styles\styles.css" />
     <Content Include="Scripts\Util.js" />
     <Content Include="Web.config" />

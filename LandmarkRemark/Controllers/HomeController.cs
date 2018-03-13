@@ -123,17 +123,21 @@ namespace LandmarkRemark.Controllers
 		}
 
 		[HttpPost]
-		public async Task<Models.Transport.Remark> CreateRemark(string remark, decimal lat, decimal lng)
+		public async Task<ActionResult> CreateRemark(string remark, decimal lat, decimal lng)
 		{
 			VerifySession();
 
 			using (var db = new LandmarkRemarkDbContext())
 			{
 				var userId = (System.Web.HttpContext.Current.Session["user"] as Models.Transport.User).UserId;
+				var user = await db.Users.SingleOrDefaultAsync(z => z.UserId == userId);
+
+				if (user == null)
+					throw new NullReferenceException("User was not found");
 
 				var newRemark = new Remark()
 				{
-					UserId = userId,
+					User = user,
 					RemarkText = remark,
 					Latitude = lat,
 					Longitude = lng,
@@ -144,7 +148,7 @@ namespace LandmarkRemark.Controllers
 
 				await db.SaveChangesAsync();
 
-				return Models.Transport.Remark.FromDb(newRemark);
+				return ToJson(Models.Transport.Remark.FromDb(newRemark));
 			}
 		}
 
