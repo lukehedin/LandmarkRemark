@@ -1,0 +1,23 @@
+﻿.app-base {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-header {
+	height: 24px;
+	display: flex;
+}
+
+.app-title {
+	flex: 1;
+}
+
+.app-user-info {
+	flex: 1;
+	text-align: right;
+}
+
+.app-content {
+	flex: 1;
+}

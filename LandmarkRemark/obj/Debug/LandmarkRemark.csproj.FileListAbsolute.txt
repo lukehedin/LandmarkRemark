@@ -17,10 +17,7 @@ C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\Newtonsoft
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Core.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Web.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Web.Mvc4.dll
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Net.Http.Formatting.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Helpers.dll
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Http.dll
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Http.WebHost.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Mvc.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Optimization.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Razor.dll
@@ -44,9 +41,6 @@ C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\Newtonsoft
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Core.xml
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Web.xml
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\React.Web.Mvc4.xml
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Net.Http.Formatting.xml
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Http.xml
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Http.WebHost.xml
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Optimization.xml
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\VroomJs.xml
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\System.Web.Razor.xml

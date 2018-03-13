@@ -5,6 +5,7 @@ using System.Web;
 
 namespace LandmarkRemark.Models.Transport
 {
+	//LH: User model to return to the client. No password/createdDate etc.
 	public class User
 	{
 		public int UserId { get; set; }

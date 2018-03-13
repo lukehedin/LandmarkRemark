@@ -4,9 +4,9 @@
 	}
 	render() {
 		return (
-			<div className="login-form">
-			button
-			</div>
+			<button className="standard-button" onClick={this.props.onClick}>
+				{this.props.text}
+			</button>
 		);
 	}
 }
