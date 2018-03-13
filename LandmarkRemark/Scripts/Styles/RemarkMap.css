@@ -1,1 +1,50 @@
-﻿
+﻿.remark-map {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.map-container {
+	flex: 1;
+}
+
+.remark-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.remark-container-inner {
+	position: relative;
+	padding: 0 16px 8px 16px;
+}
+
+.add-remark-button {
+	height: 32px;
+}
+
+.add-remark-panel {
+	height: 96px;
+	display: flex;
+	flex-direction: column;
+}
+
+.remark-text-area {
+	flex: 1;
+	resize: none;
+}
+
+.remark-buttons, .add-remark-button{
+	width: 100%;
+	height: 32px;
+}
+
+.remark-buttons{
+	display: flex;
+}
+
+.remark-button{
+	margin-top: 4px;
+	height: 32px;
+	flex: 1;
+}

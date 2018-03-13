@@ -118,32 +118,33 @@ namespace LandmarkRemark.Controllers
 			{
 				var rems = await db.Remarks.ToArrayAsync();
 				
-				return ToJson(rems);
+				return ToJson(rems.Select(Models.Transport.Remark.FromDb).ToArray());
 			}
 		}
 
 		[HttpPost]
-		public async Task<Remark> CreateRemark(string remark, decimal lat, decimal lng)
+		public async Task<Models.Transport.Remark> CreateRemark(string remark, decimal lat, decimal lng)
 		{
 			VerifySession();
 
 			using (var db = new LandmarkRemarkDbContext())
 			{
-				var userId = (System.Web.HttpContext.Current.Session["user"] as User).UserId;
+				var userId = (System.Web.HttpContext.Current.Session["user"] as Models.Transport.User).UserId;
 
 				var newRemark = new Remark()
 				{
 					UserId = userId,
 					RemarkText = remark,
 					Latitude = lat,
-					Longitude = lng
+					Longitude = lng,
+					DateCreated = DateTime.Now
 				};
 
 				var rems = db.Remarks.Add(newRemark);
 
 				await db.SaveChangesAsync();
 
-				return newRemark;
+				return Models.Transport.Remark.FromDb(newRemark);
 			}
 		}
 

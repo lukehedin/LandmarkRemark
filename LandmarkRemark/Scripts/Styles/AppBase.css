@@ -5,17 +5,19 @@
 }
 
 .app-header {
-	height: 24px;
+	height: 32px;
 	display: flex;
 }
 
 .app-title {
+	padding: 3px;
 	flex: 1;
 }
 
 .app-user-info {
 	flex: 1;
 	text-align: right;
+	padding: 4px;
 }
 
 .app-content {

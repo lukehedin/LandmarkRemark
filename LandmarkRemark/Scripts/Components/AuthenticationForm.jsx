@@ -48,17 +48,21 @@
 		//LH: These forms should also submit when enter is hit while inputs are focused
 		let form = this.state.newUser
 			? <div className="register-form">
-				<input ref="regUsername" type="text" placeholder="Enter username" />
-				<input ref="regPassword" type="password" placeholder="Enter password" />
-				<input ref="regConfirmPassword" type="password" placeholder="Confirm password" />
+				<div>
+					<input ref="regUsername" type="text" placeholder="Enter username" />
+					<input ref="regPassword" type="password" placeholder="Enter password" />
+					<input ref="regConfirmPassword" type="password" placeholder="Confirm password" />
+				</div>
 				<Button text="Register" onClick={this.handleRegisterClick} />
 				<p>
 					Existing user? <a onClick={this.handleExistingUserClick}>Log in</a>
 				</p>
 			</div>
 			: <div className="login-form">
-				<input ref="loginUsername" type="text" placeholder="Enter username" />
-				<input ref="loginPassword" type="password" placeholder="Enter password" />
+				<div>
+					<input ref="loginUsername" type="text" placeholder="Enter username" />
+					<input ref="loginPassword" type="password" placeholder="Enter password" />
+				</div>
 				<Button text="Log In" onClick={this.handleLoginClick} />
 				<p>
 					New user? <a onClick={this.handleNewUserClick}>Register here</a>

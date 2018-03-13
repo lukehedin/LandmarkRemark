@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.png" />
     <Content Include="Models\LandmarkRemarkDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LandmarkRemarkDataModel.edmx</DependentUpon>
@@ -194,6 +195,7 @@
       <DependentUpon>LandmarkRemarkDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LandmarkRemarkDbContext.cs" />
+    <Compile Include="Models\Transport\Remark.cs" />
     <Compile Include="Models\Transport\User.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>LandmarkRemarkDataModel.tt</DependentUpon>

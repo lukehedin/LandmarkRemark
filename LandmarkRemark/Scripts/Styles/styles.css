@@ -1,3 +1,17 @@
 ﻿body {
 	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+textarea, input, button {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	cursor: pointer;
+	color: #dd4422;
+}
+
+a:hover {
+	color: #e0664b;
 }

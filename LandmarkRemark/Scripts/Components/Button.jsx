@@ -4,7 +4,7 @@
 	}
 	render() {
 		return (
-			<button className="standard-button" onClick={this.props.onClick}>
+			<button className={(this.props.className || '')  + " standard-button"} onClick={this.props.onClick}>
 				{this.props.text}
 			</button>
 		);

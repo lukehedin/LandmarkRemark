@@ -59,20 +59,20 @@
 
 		if (this.state.user) {
 			baseContent = <RemarkMap /> 
-			userInfo = <span>Logged in as {this.state.user.username} - <a onClick={this.logout}>Log out</a></span>
+			userInfo = <span>{this.state.user.username} - <a onClick={this.logout}>Log out</a></span>
 		} else {
 			baseContent = <AuthenticationForm
 				handleLoginClick={this.login}
 				handleLogoutClick={this.logout}
 				handleRegisterClick={this.register} />
-			userInfo = '';
+			userInfo = ``;
 		}
 		
 		return (
 			<div className="app-base">
 				<header className="app-header">
 					<div className="app-title">
-						Landmark Remark
+						<img src="/Images/logo.png"/>
 					</div>
 					<div className="app-user-info">
 						{userInfo}
