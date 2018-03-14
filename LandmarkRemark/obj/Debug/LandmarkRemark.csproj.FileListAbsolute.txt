@@ -53,7 +53,7 @@ C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\ru-ru\Java
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\ru-ru\JavaScriptEngineSwitcher.V8.resources.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\bin\ru-ru\MsieJavaScriptEngine.resources.dll
+C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\obj\Debug\LandmarkRemark.csprojResolveAssemblyReference.cache
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\obj\Debug\LandmarkRemark.csproj.CoreCompileInputs.cache
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\obj\Debug\LandmarkRemark.dll
 C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\obj\Debug\LandmarkRemark.pdb
-C:\Users\Luke\Desktop\Projects\2018\LandmarkRemark\LandmarkRemark\obj\Debug\LandmarkRemark.csprojResolveAssemblyReference.cache

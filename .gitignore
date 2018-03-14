@@ -1,4 +1,5 @@
 .vs
 packages
 LandmarkRemark/App_Data
-LandmarkRemark/bin
+LandmarkRemark/bin/*
+LandmarkRemark/obj/*
