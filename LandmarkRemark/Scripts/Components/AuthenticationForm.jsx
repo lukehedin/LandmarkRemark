@@ -7,6 +7,8 @@ class AuthenticationForm extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.regKeyDown = this.regKeyDown.bind(this);
+		this.loginKeyDown = this.loginKeyDown.bind(this);
 		this.handleLoginClick = this.handleLoginClick.bind(this);
 		this.handleRegisterClick = this.handleRegisterClick.bind(this);
 		this.handleNewUserClick = this.handleNewUserClick.bind(this);
@@ -15,9 +17,6 @@ class AuthenticationForm extends React.Component {
 		this.state = {
 			newUser: false
 		}
-	}
-	componentDidMount() {
-		this.refs.loginUsername.focus();
 	}
 	handleLoginClick() {
 		let username = this.refs.loginUsername.value;
@@ -46,6 +45,12 @@ class AuthenticationForm extends React.Component {
 			}
 		}
 	}
+	regKeyDown(e) {
+		if (e.keyCode == 13) this.handleRegisterClick();
+	}
+	loginKeyDown(e) {
+		if (e.keyCode == 13) this.handleLoginClick();
+	}
 	handleNewUserClick() {
 		this.setState({
 			newUser: true
@@ -57,28 +62,25 @@ class AuthenticationForm extends React.Component {
 		});
 	}
 	render() {
-		//These forms should also submit when enter is hit while inputs are focused
 		let form = this.state.newUser
 			? <div className="register-form">
-				<div>
-					<input ref="regUsername" type="text" placeholder="Enter username" />
-					<input ref="regPassword" type="password" placeholder="Enter password" />
-					<input ref="regConfirmPassword" type="password" placeholder="Confirm password" />
+				<div className="auth-inputs">
+					<input className="auth-input" onKeyDown={this.regKeyDown} ref="regUsername" type="text" placeholder="Enter username" />
+					<input className="auth-input" onKeyDown={this.regKeyDown} ref="regPassword" type="password" placeholder="Enter password" />
+					<input className="auth-input" onKeyDown={this.regKeyDown} ref="regConfirmPassword" type="password" placeholder="Confirm password" />
+					<Button text="Register" onClick={this.handleRegisterClick} />
 				</div>
-				<Button text="Register" onClick={this.handleRegisterClick} />
-				<p>
-					Existing user? <a onClick={this.handleExistingUserClick}>Log in</a>
-				</p>
+				<p>Existing user?</p>
+				<a onClick={this.handleExistingUserClick}>Log in</a>
 			</div>
 			: <div className="login-form">
-				<div>
-					<input ref="loginUsername" type="text" placeholder="Enter username" />
-					<input ref="loginPassword" type="password" placeholder="Enter password" />
+				<div className="auth-inputs">
+					<input className="auth-input" onKeyDown={this.loginKeyDown} ref="loginUsername" type="text" placeholder="Enter username" />
+					<input className="auth-input" onKeyDown={this.loginKeyDown} ref="loginPassword" type="password" placeholder="Enter password" />
+					<Button text="Log In" onClick={this.handleLoginClick} />
 				</div>
-				<Button text="Log In" onClick={this.handleLoginClick} />
-				<p>
-					New user? <a onClick={this.handleNewUserClick}>Register here</a>
-				</p>
+				<p>New user?</p>
+				<a onClick={this.handleNewUserClick}>Register here</a>
 			</div>;
 
 		return (

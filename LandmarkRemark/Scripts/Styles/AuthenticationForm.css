@@ -4,3 +4,13 @@
 	margin: 10% auto;
 	text-align: center;
 }
+
+.auth-inputs {
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+.auth-input {
+	display: block;
+	margin: 8px 0;
+}

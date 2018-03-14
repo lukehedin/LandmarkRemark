@@ -1,6 +1,7 @@
 ﻿.standard-button {
 	border: 1px solid #ad2f13;
 	color: white;
+	padding: 8px;
 	border-radius: 4px;
 	background-color: #dd4422;
 	cursor: pointer;

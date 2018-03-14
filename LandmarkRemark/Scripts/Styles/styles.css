@@ -7,6 +7,10 @@ textarea, input, button {
 	font-family: 'Open Sans', sans-serif;
 }
 
+p {
+	margin: 4px 0;
+}
+
 a {
 	cursor: pointer;
 	color: #dd4422;
