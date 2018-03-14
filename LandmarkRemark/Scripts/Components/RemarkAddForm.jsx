@@ -1,4 +1,9 @@
-﻿class RemarkAddForm extends React.Component {
+﻿/*
+The form to submit a remark. Takes in a 'submitRemark' function, so theoretically this could
+be used in other parts of the application without having to be coupled with the remark map.
+*/
+
+class RemarkAddForm extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -11,11 +16,14 @@
 		};
 	}
 	onAddRemarkClick() {
+		if (this.props.onAddRemark)
+			this.props.onAddRemark();
+
 		this.setState({
 			addingRemark: true
 		});
 
-		//LH: This could be done better. remarkTextArea doesnt exist in refs until created, but could be simply hidden with css
+		//This could be done better. remarkTextArea doesnt exist in refs until created, but could be simply hidden with css
 		setTimeout(() => {
 			this.refs.remarkTextArea.focus();
 		}, 100)
@@ -28,7 +36,8 @@
 			return;
 		}
 
-		this.props.submitRemark(remarkMap.refs.remarkTextArea.value);
+		if (this.props.submitRemark)
+			this.props.submitRemark(remarkMap.refs.remarkTextArea.value);
 
 		this.setState({
 			addingRemark: false
@@ -45,7 +54,7 @@
 				<div className="add-remark-container-inner">
 					{this.state.addingRemark
 						? <div className="add-remark-panel">
-							<textarea className="remark-text-area" ref="remarkTextArea" />
+							<textarea placeholder="Enter a remark..." className="remark-text-area" ref="remarkTextArea" />
 							<div className="remark-buttons">
 								<Button className="remark-button" text="Cancel" onClick={this.cancelAddRemark}></Button>
 								<Button className="remark-button" text="Save" onClick={this.submitRemark}></Button>

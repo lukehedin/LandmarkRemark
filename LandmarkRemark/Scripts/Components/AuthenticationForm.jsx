@@ -1,4 +1,9 @@
-﻿class AuthenticationForm extends React.Component {
+﻿/*
+Responsible for logging in and registering users. Different forms shown depending on newUser bool.
+This component handles any validation of its forms, but once validated, the AppBase handles the submit action
+*/
+
+class AuthenticationForm extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -21,7 +26,7 @@
 		if (username && password) {
 			this.props.handleLoginClick(username, password);
 		} else {
-			//LH: Should be much prettier/specific
+			//Should be much prettier/specific
 			alert('Please provide a username and password');
 		}
 	}
@@ -33,7 +38,7 @@
 		if (username && password && (password === confirmPassword)) {
 			this.props.handleRegisterClick(username, password);
 		} else {
-			//LH: Should be much prettier/specific
+			//Should be much prettier/specific
 			alert('Please provide a username, password and confirmed password');
 		}
 	}
@@ -48,7 +53,7 @@
 		});
 	}
 	render() {
-		//LH: These forms should also submit when enter is hit while inputs are focused
+		//These forms should also submit when enter is hit while inputs are focused
 		let form = this.state.newUser
 			? <div className="register-form">
 				<div>

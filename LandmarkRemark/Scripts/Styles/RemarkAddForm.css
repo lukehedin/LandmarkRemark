@@ -7,6 +7,8 @@
 .add-remark-container-inner {
 	position: relative;
 	padding: 0 16px 8px 16px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 
 .add-remark-button {
@@ -14,7 +16,7 @@
 }
 
 .add-remark-panel {
-	height: 96px;
+	height: 128px;
 	display: flex;
 	flex-direction: column;
 }

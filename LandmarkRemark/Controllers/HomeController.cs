@@ -1,41 +1,25 @@
 ﻿using LandmarkRemark.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-using System.Text;
-using Newtonsoft.Json.Serialization;
+using LandmarkRemark.Helpers;
 
 namespace LandmarkRemark.Controllers
 {
+	/* This is the only controller. 
+	 * Ideally a lot of the Authentication/Remark functionality would be separated from here.
+	 */
+
     public class HomeController : Controller
     {
-		//LH: [Authorize] might be better used for this basic server-side verification.
-		//LH: Another option could be to make a custom filter attribute that calls this method
+		//[Authorize] might be better used for this basic server-side verification.
+		//Another option could be to make a custom filter attribute that calls this method
 		private static void VerifySession()
 		{
 			if (System.Web.HttpContext.Current.Session["user"] != null) return;
 			throw new UnauthorizedAccessException("User not logged in");
-		}
-
-		//LH: Used to return camelCase JSON
-		private static ContentResult ToJson(object obj)
-		{
-			return new ContentResult
-			{
-				ContentType = "application/json",
-				Content = JsonConvert.SerializeObject(obj, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
-				ContentEncoding = Encoding.UTF8
-			};
-		}
-
-		private static ContentResult JsonError(string msg)
-		{
-			return ToJson(new { errorMsg = msg });
 		}
 
 		// GET: Home
@@ -51,14 +35,14 @@ namespace LandmarkRemark.Controllers
 		{
 			using (var db = new LandmarkRemarkDbContext())
 			{
-				//LH:  Don't let a user with a taken username get registered
+				// Don't let a user with a taken username get registered
 				var user = await db.Users.SingleOrDefaultAsync(z => z.Username == username);
 
-				//LH: More appropriate error messages could be applied here
-				if (user != null) return JsonError("Username is taken");
+				//More appropriate error messages could be applied here
+				if (user != null) return JsonHelper.JsonError("Username is taken");
 
-				//LH: In a real scenario, right about here I'd be hashing the password provided, before storing it in the database!
-				//LH: The users table would also have a more appropriate data type (eg. varchar(128)), if it was going to be storing hashed passwords.
+				//In a real scenario, right about here I'd be hashing the password provided, before storing it in the database!
+				//The users table would also have a more appropriate data type (eg. varchar(128)), if it was going to be storing hashed passwords.
 
 				//Add the new user based on supplied data
 				db.Users.Add(new User()
@@ -81,18 +65,18 @@ namespace LandmarkRemark.Controllers
 		{
 			using (var db = new LandmarkRemarkDbContext())
 			{
-				//LH: Single or default, there definitely shouldn't be >1 user with the same username
+				//Single or default, there definitely shouldn't be >1 user with the same username
 				var dbUser = await db.Users.SingleOrDefaultAsync(z => z.Username == username);
 
-				//LH: The password would need to be hashed to compare to its stored hash.
-				if (dbUser == null || dbUser.Password != password) return JsonError("Incorrect username or password");
+				//The password would need to be hashed to compare to its stored hash.
+				if (dbUser == null || dbUser.Password != password) return JsonHelper.JsonError("Incorrect username or password");
 
 				var user = Models.Transport.User.FromDb(dbUser);
 
-				//LH: Set the session variable to the user with matched password
+				//Set the session variable to the user with matched password
 				System.Web.HttpContext.Current.Session["user"] = user;
 
-				return ToJson(user);
+				return JsonHelper.ToJson(user);
 			}
 		}
 
@@ -101,7 +85,7 @@ namespace LandmarkRemark.Controllers
 		{
 			VerifySession();
 
-			//LH: Clear the user
+			//Clear the user
 			System.Web.HttpContext.Current.Session["user"] = null;
 		}
 
@@ -118,7 +102,8 @@ namespace LandmarkRemark.Controllers
 			{
 				var rems = await db.Remarks.ToArrayAsync();
 				
-				return ToJson(rems.Select(Models.Transport.Remark.FromDb).ToArray());
+				//Simply return all remarks from the DB
+				return JsonHelper.ToJson(rems.Select(Models.Transport.Remark.FromDb).ToArray());
 			}
 		}
 
@@ -129,12 +114,15 @@ namespace LandmarkRemark.Controllers
 
 			using (var db = new LandmarkRemarkDbContext())
 			{
+				//Find the user based off the stored user session data
 				var userId = (System.Web.HttpContext.Current.Session["user"] as Models.Transport.User).UserId;
 				var user = await db.Users.SingleOrDefaultAsync(z => z.UserId == userId);
 
 				if (user == null)
 					throw new NullReferenceException("User was not found");
 
+				//Create a new remark made by the user. I specifically use the 'User' here instead of 'UserId'
+				//as the mapping method below, FromDb, when the data is returned uses the User.Username
 				var newRemark = new Remark()
 				{
 					User = user,
@@ -148,7 +136,7 @@ namespace LandmarkRemark.Controllers
 
 				await db.SaveChangesAsync();
 
-				return ToJson(Models.Transport.Remark.FromDb(newRemark));
+				return JsonHelper.ToJson(Models.Transport.Remark.FromDb(newRemark));
 			}
 		}
 

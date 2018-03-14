@@ -1,4 +1,9 @@
-﻿class AppBase extends React.Component {
+﻿/*
+The AppBase holds all subcomponents and is intialised on page load.
+Depending on whether there is an authenticated user passed in from the backend, the authentication form or map will be shown.
+*/
+
+class AppBase extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -6,7 +11,7 @@
 		this.logout = this.logout.bind(this);
 		this.register = this.register.bind(this);
 
-		//LH: Session stores user with non-camelCase so we remap here. A bit gross.
+		//Session stores user with non-camelCase so we remap here. A bit gross.
 		this.state = {
 			user: props.user ? {
 				userId: props.user.UserId,
@@ -59,7 +64,7 @@
 
 		if (this.state.user) {
 			baseContent = <RemarkMap /> 
-			userInfo = <div>{this.state.user.username}<a onClick={this.logout}>Log out</a></div>
+			userInfo = <div>{this.state.user.username}<br/><a onClick={this.logout}>Log out</a></div>
 		} else {
 			baseContent = <AuthenticationForm
 				handleLoginClick={this.login}

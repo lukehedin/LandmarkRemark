@@ -1,7 +1,14 @@
-﻿class RemarkMap extends React.Component {
+﻿/*
+The remark map. Main part of the application, utilising the filter and addremark components.
+Theres a lot of code in here that I'd liked to have tried 'reactifying', like the markers/remark tips,
+but as they were quite simple to do in plain javascript/jquery/gmaps I went with that option.
+*/
+
+class RemarkMap extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.onAddRemark = this.onAddRemark.bind(this);
 		this.submitRemark = this.submitRemark.bind(this);
 		this.filterRemarks = this.filterRemarks.bind(this);
 	}
@@ -20,8 +27,8 @@
 			});
 		});
 
-		//LH: The getCurrentPosition was not working without a timeout here. Would like to have figured out why!
-		//LH: On certain devices the accuracy of this is questionable... Landmark Remark would have a lot of remarks at internet exchange points!
+		//The getCurrentPosition was not working without a timeout here. Would like to have figured out why!
+		//On certain devices the accuracy of this is questionable... Landmark Remark would have a lot of remarks at internet exchange points!
 		let getLocationPromise = new Promise((resolve, reject) => {
 			setTimeout(() => {
 				if (navigator.geolocation) {
@@ -35,7 +42,7 @@
 				}
 			}, 100);
 		});
-
+		
 		Promise.all([getRemarksPromise, getLocationPromise]).then(data => {
 			let remarks = this.props.remarks = data[0];
 			let pos = data[1];
@@ -75,7 +82,7 @@
 			}
 			
 			['mousedown', 'touchstart'].map(function (event) {
-				//LH: For development purposes, holding a click anywhere on the map for 2 seconds will change the user's location to that area
+				//For development purposes, holding a click anywhere on the map for 2 seconds will change the user's location to that area
 				google.maps.event.addListener(remarkMap.props.map, event, function (e) {
 					remarkMap.props.mouseHoldTimeout = setTimeout(function () {
 						remarkMap.setUserPosition(e.latLng.lat(), e.latLng.lng());
@@ -97,13 +104,13 @@
 		//Remove existing marker if there is one
 		$('.user-location-marker').remove();
 
-		//LH update the property stored for user location
+		// update the property stored for user location
 		remarkMap.props.userLatLng = {
 			lat: lat,
 			lng: lng
 		};
 
-		//LH: To style the markers nicely, we use overlayview instead
+		//To style the markers nicely, we use overlayview instead
 		let overlay = new google.maps.OverlayView();
 		overlay.setMap(remarkMap.props.map);
 		overlay.draw = () => {
@@ -119,16 +126,17 @@
 		overlay.setMap(remarkMap.props.map);
 		overlay.draw = () => {
 			remarkMap.drawMarker(overlay, remark.latitude, remark.longitude, 'remark-marker', '/Images/point.svg', function (e) {
-				//LH: Remove any existing tips
+				//Remove any existing tips
 				$('.map-marker-tip').remove();
 
-				//Show the new marker
+				//Show the new marker's tip
 				let remarkDiv = document.createElement('div');
 				remarkDiv.className = 'map-marker-tip';
-				remarkDiv.innerHTML = `Remark by <span class="tip-username">` + remark.username + `</span> on ` + remark.createdTimestamp +
+				remarkDiv.innerHTML = `<span class="tip-username">` + remark.username + `</span> remarked:` + 
 					`<div class="tip-remark">` +
 						remark.remarkText +
-					`</div>`;
+					`</div>` +
+					`<span>` + remark.createdTimestamp + `</span>`;
 
 				overlay.div.appendChild(remarkDiv);
 
@@ -174,6 +182,10 @@
 			div.style.top = (point.y - markerHeight) + 'px';
 		}
 	}
+	onAddRemark() {
+		//Pan to the user marker
+		this.props.map.panTo(this.props.userLatLng);
+	}
 	submitRemark(remark) {
 		var remarkMap = this;
 
@@ -203,7 +215,7 @@
 				<RemarkFilter filterRemarks={this.filterRemarks} />
 				<div id="map-container" className="map-container">
 				</div>
-				<RemarkAddForm submitRemark={this.submitRemark} />
+				<RemarkAddForm onAddRemark={this.onAddRemark} submitRemark={this.submitRemark} />
 			</div>
 		);
 	}

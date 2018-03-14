@@ -15,3 +15,10 @@ a {
 a:hover {
 	color: #e0664b;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}

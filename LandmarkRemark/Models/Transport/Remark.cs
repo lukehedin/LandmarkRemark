@@ -27,12 +27,12 @@ namespace LandmarkRemark.Models.Transport
 			{
 				RemarkId = rem.RemarkId,
 				UserId = rem.UserId,
-				//LH: 'Username' join may not scale well. Could be enhanced by utilising a lookup of userId to username
+				//'Username' join may not scale well. Could be enhanced by utilising a lookup of userId to username
 				Username = rem.User.Username,
 				RemarkText = rem.RemarkText,
 				Latitude = rem.Latitude,
 				Longitude = rem.Longitude,
-				CreatedTimestamp = rem.DateCreated.ToShortDateString()
+				CreatedTimestamp = rem.DateCreated.ToString("dd/M/yyyy hh:mmtt")
 			};
 		}
 	}

@@ -9,7 +9,7 @@
 	@Styles.Render("~/bundles/styles")
 </head>
 <body>
-	<!-- Renders the app base component server side, and provides .NET session -->
+	<!-- Renders the app base component server side, and provides .NET session user details -->
 	@Html.React("AppBase", new
 	{
 		user = System.Web.HttpContext.Current.Session["user"]
