@@ -22,7 +22,9 @@ class AppBase extends React.Component {
 	login(username, password) {
 		let appBase = this;
 
-		Util.post('Login', {
+		Util.setLoading('.app-content', true);
+
+		Util.post('/Home/Login', {
 			username: username,
 			password: password
 		}, {
@@ -30,32 +32,40 @@ class AppBase extends React.Component {
 				appBase.setState({
 					user: data
 				});
-			}
-		});
-	}
-	logout() {
-		let appBase = this;
-
-		Util.post('Logout', {}, {
-			success: function () {
-				appBase.setState({
-					user: null
-				});
+			},
+			complete: function () {
+				Util.setLoading('.app-content', false);
 			}
 		});
 	}
 	register(username, password) {
 		let appBase = this;
 
-		Util.post('Register', {
+		Util.setLoading('.app-content', true);
+
+		Util.post('/Home/Register', {
 			username: username,
 			password: password
 		}, {
-			success: function (data) {
-				appBase.setState({
-					user: data
-				});
-			}
+				success: function (data) {
+					appBase.setState({
+						user: data
+					});
+				},
+				complete: function () {
+					Util.setLoading('.app-content', false);
+				}
+			});
+	}
+	logout() {
+		let appBase = this;
+
+		//Logout serverside
+		Util.post('/Home/Logout');
+
+		//Clear client-side user
+		appBase.setState({
+			user: null
 		});
 	}
 	render() {

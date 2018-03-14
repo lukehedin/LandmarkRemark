@@ -17,7 +17,7 @@ class RemarkMap extends React.Component {
 		//First load, fetch the remarks
 
 		let getRemarksPromise = new Promise((resolve, reject) => {
-			Util.post('GetRemarks', {}, {
+			Util.post('/Home/GetRemarks', {}, {
 				success: function (data) {
 					resolve(data);
 				},
@@ -189,7 +189,7 @@ class RemarkMap extends React.Component {
 	submitRemark(remark) {
 		var remarkMap = this;
 
-		Util.post('CreateRemark', {
+		Util.post('/Home/CreateRemark', {
 			remark: remark,
 			lat: remarkMap.props.userLatLng.lat,
 			lng: remarkMap.props.userLatLng.lng

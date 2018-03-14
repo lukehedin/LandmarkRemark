@@ -26,7 +26,7 @@ class AuthenticationForm extends React.Component {
 		if (username && password) {
 			this.props.handleLoginClick(username, password);
 		} else {
-			//Should be much prettier/specific
+			//Could be nicer
 			alert('Please provide a username and password');
 		}
 	}
@@ -38,8 +38,12 @@ class AuthenticationForm extends React.Component {
 		if (username && password && (password === confirmPassword)) {
 			this.props.handleRegisterClick(username, password);
 		} else {
-			//Should be much prettier/specific
-			alert('Please provide a username, password and confirmed password');
+			//Could be nicer
+			if (password === confirmPassword) {
+				alert('Please provide a username, password and confirmed password');
+			} else {
+				alert('Passwords do not match');
+			}
 		}
 	}
 	handleNewUserClick() {

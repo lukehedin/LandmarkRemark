@@ -23,14 +23,6 @@ namespace LandmarkRemark
 				.AddScript("~/Scripts/Components/RemarkFilter.jsx")
 				.AddScript("~/Scripts/Components/RemarkMap.jsx")
 				.AddScript("~/Scripts/Components/AppBase.jsx");
-			
-			// If you use an external build too (for example, Babel, Webpack,
-			// Browserify or Gulp), you can improve performance by disabling 
-			// ReactJS.NET's version of Babel and loading the pre-transpiled 
-			// scripts. Example:
-			//ReactSiteConfiguration.Configuration
-			//	.SetLoadBabel(false)
-			//	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
 		}
 	}
 }

@@ -1,9 +1,9 @@
 ﻿/*
-Any common functions/constants would belong here. As you can see, I only used this file to make a consistent POST
+Any common functions/constants would belong here. As you can see, I only used this file to make a consistent POST and for a generic loadmask function
 */
 
 const Util = {
-	post: function (endpoint, params, callbacks) {
+	post: (endpoint, params = {}, callbacks = {}) => {
 		//jquery- only use?
 		$.ajax(endpoint, {
 			data: params,
@@ -28,5 +28,11 @@ const Util = {
 				if (callbacks.complete) callbacks.complete(data);
 			}
 		});
+	},
+
+	setLoading: (selector, loading) => {
+		loading
+			? $(selector).addClass('loading')
+			: $(selector).removeClass('loading');
 	}
 };

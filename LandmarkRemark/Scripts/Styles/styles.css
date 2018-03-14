@@ -22,3 +22,9 @@ textarea:focus,
 button:focus {
 	outline: none;
 }
+
+.loading{
+	cursor: default !important;
+	pointer-events: none !important;
+	opacity: 0.5;
+}
